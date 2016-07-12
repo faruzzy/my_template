@@ -15,7 +15,7 @@ gulp.task('sass', () => {
 	return gulp.src('app/scss/*.scss')
 		//.pipe(autoprefixer())
 		.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-		.pipe(gulp.dest('app/css/*.css'))
+		.pipe(gulp.dest('app/css/'))
 		.pipe(browserSync.stream());
 });
 
