@@ -9,7 +9,7 @@ const gulp = require('gulp'),
     source = require('vinyl-source-stream'),
     buffer = require('vinyl-buffer'),
     browserSync = require('browser-sync').create(),
-    sass = requre('gulp-sass');
+    sass = require('gulp-sass');
 
 gulp.task('sass', () => {
 	return gulp.src('app/scss/*.scss')
@@ -34,7 +34,7 @@ gulp.task('serve', () => {
 // });
 
 gulp.task('es6', () => {
-    browserify('src/app.js')
+    browserify('app/js/app.js')
         .transform('babelify', {
             presets: ['es2015']
         })
