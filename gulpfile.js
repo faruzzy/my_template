@@ -1,8 +1,3 @@
-/*const gulp = require('gulp'),
-    browserSync = require('browser-sync').create(),
-    babel = require('gulp-babel'),
-	sass = requre('gulp-sass');*/
-
 const gulp = require('gulp'),
     babelify = require('babelify'),
     browserify = require('browserify'),
@@ -21,17 +16,13 @@ gulp.task('sass', () => {
 
 gulp.task('serve', () => {
     browserSync.init({
+		watchOptions: {
+			ignoreInitial: true
+		},
+		files: ['app/'],
         server: 'app/'
     });
 });
-
-// gulp.task('es6', () => {
-//     return gulp.src('app/js/**/*.js')
-//         .pipe(babel({
-//             presets: ['es2015']
-//         }))
-//         .pipe(gulp.dest('app/build'));
-// });
 
 gulp.task('es6', () => {
     browserify('app/js/app.js')
