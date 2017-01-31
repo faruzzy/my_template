@@ -4,7 +4,17 @@ const gulp = require('gulp'),
     source = require('vinyl-source-stream'),
     buffer = require('vinyl-buffer'),
     browserSync = require('browser-sync').create(),
-    sass = require('gulp-sass');
+	sass = require('gulp-sass'),
+	jsonServer = require('gulp-json-srv');
+
+const reloadAPI = jsonServer.create({
+	data: './data/db.json',
+	port: 3500
+});
+
+gulp.watch(['./data/db.json'], () => {
+	reloadAPI.reload();
+});
 
 gulp.task('sass', () => {
 	return gulp.src('app/scss/*.scss')
