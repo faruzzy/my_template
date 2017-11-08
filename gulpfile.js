@@ -20,15 +20,15 @@ gulp.task('serve', () => {
 	});
 });
 
-gulp.task('rollup', function() {
-	rollup.rollup({
+gulp.task('rollup', async () => {
+	const bundle = await rollup.rollup({
 		entry: './app/js/app.js'
-	}).then(bundle => {
-		bundle.write({
-			dest: 'app/build/app.js',
-			format: 'iife',
-			sourceMap: true
-		})
+	});
+
+	await bundle.write({
+		dest: 'app/build/app.js',
+		format: 'iife',
+		sourceMap: true
 	});
 });
 
