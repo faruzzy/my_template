@@ -1,6 +1,7 @@
 const gulp = require('gulp'),
 	browserSync = require('browser-sync').create(),
-	sass = require('gulp-sass');
+	sass = require('gulp-sass'),
+	rollup = require('rollup');
 
 gulp.task('sass', () => {
 	return gulp.src('app/scss/*.scss')
@@ -19,8 +20,21 @@ gulp.task('serve', () => {
 	});
 });
 
-gulp.task('default', ['serve', 'sass'], () => {
+gulp.task('rollup', function() {
+	rollup.rollup({
+		entry: './app/js/app.js'
+	}).then(bundle => {
+		bundle.write({
+			dest: 'app/build/app.js',
+			format: 'iife',
+			sourceMap: true
+		})
+	});
+});
+
+gulp.task('default', ['serve', 'sass', 'rollup'], () => {
 	gulp.watch('app/**/*.html').on('change', browserSync.reload);
 	gulp.watch('app/js/**/*.js').on('change', browserSync.reload);
+	gulp.watch('app/js/**/*.js', ['rollup']);
 	gulp.watch('app/scss/*.scss', ['sass']);
 });

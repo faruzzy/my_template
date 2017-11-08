@@ -4,7 +4,8 @@
   "description": "HTML5 starter",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+	"test": "rollup ./app/js/test/app.test.js --o ./app/build/test.bundle.js && karma start karma.conf.js",
+    "spec_dir": "./app/build/"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,10 @@
     "eslint": "^4.1.1",
     "gulp": "^3.9.1",
     "gulp-sass": "^2.3.2",
-    "jasmine": "^2.5.3"
+    "jasmine": "^2.5.3",
+    "karma": "^1.7.0",
+    "karma-chrome-launcher": "^2.1.1",
+    "karma-jasmine": "^1.1.0",
+    "rollup": "^0.42.0"
   }
 }
