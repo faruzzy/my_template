@@ -3,6 +3,7 @@
         "browser": true,
         "es6": true
     },
+	"plugins": ["jasmine"],
     "extends": "eslint:recommended",
     "parserOptions": {
 		"ecmaVersion": 6,
@@ -24,6 +25,7 @@
         "semi": [
             "error",
             "always"
-        ]
+        ],
+		"no-console": 0
     }
 }
