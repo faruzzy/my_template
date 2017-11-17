@@ -4,7 +4,7 @@
   "description": "HTML5 starter",
   "main": "index.js",
   "scripts": {
-	"test": "rollup ./app/js/test/app.test.js --o ./app/build/test.bundle.js && karma start karma.conf.js",
+	"test": "rollup ./app/js/test/app.test.js --o ./app/build/test.bundle.js --f iife && karma start karma.conf.js",
     "spec_dir": "./app/build/"
   },
   "repository": {
